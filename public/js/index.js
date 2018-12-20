@@ -28,7 +28,7 @@ function getCollapseText(value) {
 	let openPorts = "";
 
 	value.ports.forEach(port => {
-		openPorts += ", " + port.port;
+		openPorts += port.port + ", ";
 	});
     return `Mac: ${value.mac}, Vendor: ${value.vendor}, Otwarte Porty: ${openPorts}`;
 }
