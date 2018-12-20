@@ -4,7 +4,7 @@ const COLLAPSE_DIV_PREFIX = 'Collapse_';
 
 Io.on('getDevices', (devices) => { // Otrzymanie informacji od serwera z urządzeniami
     const tmp = $('#computers');
-    tmp.empty(); // Wyczyszczenie tabeli urządzeń na stronie
+	tmp.empty(); // Wyczyszczenie tabeli urządzeń na stronie
 
     devices.forEach((device, index) => { // Dla każdego urządzenia
         device.index = index;
@@ -25,5 +25,10 @@ function getCollapse(value) { // Ustawienia elementu na stronie, który po klikn
 }
 
 function getCollapseText(value) {
-    return `Mac: ${value.mac}, Vendor: ${value.vendor}`;
+	let openPorts = "";
+
+	value.ports.forEach(port => {
+		openPorts += ", " + port.port;
+	});
+    return `Mac: ${value.mac}, Vendor: ${value.vendor}, Otwarte Porty: ${openPorts}`;
 }
